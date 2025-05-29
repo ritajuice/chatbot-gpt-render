@@ -4,13 +4,21 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const app = express();
-app.use(express.json());
-
 // ✅ Xác minh Webhook Token
-app.get("/webhook", (req, res) => {
+const express = require('express');
+const app = express();
+
+const VERIFICATION_TOKEN = 'your-verification-token'; // Thay bằng token bạn đã cấu hình
+
+app.get('/webhook', (req, res) => {
   const token = req.query.token;
-  res.send(token);
+  const challenge = req.query.challenge;
+
+  if (token === VERIFICATION_TOKEN) {
+    res.status(200).send(challenge);
+  } else {
+    res.sendStatus(401);
+  }
 });
 
 // ✅ Xử lý nội dung gửi đến từ ChatBot
