@@ -8,15 +8,16 @@ const app = express();
 app.use(express.json());
 
 // ✅ Xác minh Webhook Token
-app.get("/webhook", (req, res) => {
+const VERIFICATION_TOKEN = '1cd2328dc97e7da6d656593a1cf4fd8c'; // Thay bằng token bạn đã cấu hình
+
+app.get('/webhook', (req, res) => {
   const token = req.query.token;
   const challenge = req.query.challenge;
 
-  // Thay 'your-verification-token' bằng token bạn đã cấu hình trong ChatBot.com
-  if (token === '1cd2328dc97e7da6d656593a1cf4fd8c') {
-    res.send(challenge);
+  if (token === VERIFICATION_TOKEN) {
+    res.status(200).send(challenge);
   } else {
-    res.sendStatus(403);
+    res.sendStatus(401);
   }
 });
 
