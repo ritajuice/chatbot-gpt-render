@@ -8,7 +8,7 @@ dotenv.config();
 const express = require('express');
 const app = express();
 
-const VERIFICATION_TOKEN = 'drtyrtygrtr4ewfer3534cdser'; // Thay bằng token bạn đã cấu hình
+const VERIFICATION_TOKEN = '1be63ab60fdb854539cc2a65d72c6753'; // Thay bằng token bạn đã cấu hình
 
 app.get('/webhook', (req, res) => {
   const token = req.query.token;
