@@ -17,7 +17,7 @@ app.get('/webhook', (req, res) => {
   if (token === VERIFICATION_TOKEN) {
     res.status(200).send(challenge);
   } else {
-    res.sendStatus(401);
+    res.sendStatus('401- Không kết nối được');
   }
 });
 
@@ -33,7 +33,7 @@ app.post("/webhook", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are a helpful customer support assistant for a beverage company. Answer clearly and politely.",
+            content: "You are a helpful customer support assistant for  beverage company. Answer clearly and politely.",
           },
           {
             role: "user",
