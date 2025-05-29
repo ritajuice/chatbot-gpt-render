@@ -10,7 +10,14 @@ app.use(express.json());
 // ✅ Xác minh Webhook Token
 app.get("/webhook", (req, res) => {
   const token = req.query.token;
-  res.send(token); // Trả về token để xác minh webhook với ChatBot
+  const challenge = req.query.challenge;
+
+  // Thay 'your-verification-token' bằng token bạn đã cấu hình trong ChatBot.com
+  if (token === '1cd2328dc97e7da6d656593a1cf4fd8c') {
+    res.send(challenge);
+  } else {
+    res.sendStatus(403);
+  }
 });
 
 // ✅ Xử lý nội dung gửi đến từ ChatBot
