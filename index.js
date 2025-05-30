@@ -45,7 +45,7 @@ app.post("/webhook", async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer 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}`,
+          Authorization: 'Bearer ${process.env.OPENAI_API_KEY}',
           "Content-Type": "application/json",
         },
       }
@@ -54,7 +54,7 @@ app.post("/webhook", async (req, res) => {
     const reply = gptResponse.data.choices[0].message.content;
     res.json({ reply });
   } catch (err) {
-    console.error("OpenAI error:", err.message);
+    console.error("OpenAI error:", err.response ? err.response.data : err);
     res.status(500).json({ reply: "Sorry, there was an error processing your message." });
   }
 });
