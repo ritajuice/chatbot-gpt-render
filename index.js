@@ -52,7 +52,14 @@ app.post("/webhook", async (req, res) => {
     );
 
     const reply = gptResponse.data.choices[0].message.content;
-    res.json({ reply });
+  res.json({
+      responses: [
+        {
+          type: "text",
+          message: reply,
+        },
+      ],
+    });
   } catch (err) {
     console.error("OpenAI error:", err.response ? err.response.data : err);
     res.status(500).json({ reply: "Sorry, there was an error processing your message." });
