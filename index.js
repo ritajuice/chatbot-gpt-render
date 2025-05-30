@@ -29,7 +29,7 @@ app.post("/webhook", async (req, res) => {
     const gptResponse = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
@@ -45,7 +45,7 @@ app.post("/webhook", async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          Authorization: `Bearer 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}`,
           "Content-Type": "application/json",
         },
       }
