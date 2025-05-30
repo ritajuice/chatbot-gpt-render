@@ -45,7 +45,7 @@ app.post("/webhook", async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer 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}`,
+          Authorization: `Bearer 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}`,
           "Content-Type": "application/json",
         },
       }
